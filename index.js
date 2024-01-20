@@ -12,3 +12,4 @@ for (const page of pages) {
 }
 app.get('/*', (req, res) => res.redirect('/main'))
 app.listen(port, console.log(`Running website on port: ${port}.\nLink for preview: http://localhost:${port}`))
+module.exports = app
