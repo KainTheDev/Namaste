@@ -10,6 +10,8 @@ for (const page of pages) {
         res.sendFile(join(process.cwd(), 'pages', page))
     })
 }
-app.get('/*', (req, res) => res.redirect('/main'))
+app.get('/*', (req, res) => {
+    if(!pages.includes(`${req.url.replace('/', '')}.html`)) return res.redirect('/main')
+})
 app.listen(port, console.log(`Running website on port: ${port}.\nLink for preview: http://localhost:${port}`))
 module.exports = app
