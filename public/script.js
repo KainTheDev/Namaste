@@ -36,7 +36,18 @@ const links = [
     },
     {
         name: 'Github',
-        url_name: ''
+        url_name: 'NamTheDev',
+        url: 'https://github.com/NamTheDev'
+    },
+    {
+        name: 'Gravatar',
+        url_name: 'nguyenthiennam2009',
+        url: 'https://gravatar.com/nguyenthiennam2009'
+    },
+    {
+        name: 'NPM',
+        url_name: 'soul_yt',
+        url: 'https://www.npmjs.com/~soul_yt'
     }
 ].sort((a, b) => {
     if (a.name < b.name) {
