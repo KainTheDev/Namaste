@@ -113,3 +113,13 @@ button.primary:hover {
 button.primary:active {
     background-color: teal;
 }
+
+.centered {
+    position: fixed;
+    width: 40%;
+    text-align: center;
+    top: auto;
+    left: 50%;
+    padding: 20px;
+    transform: translate(-50%, 0);
+}
