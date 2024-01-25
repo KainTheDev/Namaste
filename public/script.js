@@ -23,8 +23,30 @@ const links = [
         name: 'Youtube',
         url_name: '@nguyen_thien_nam',
         url: 'https://www.youtube.com/channel/UCuBqPJLikRQ5ILmeGfouvGA'
+    },
+    {
+        name: 'Facebook',
+        url_name: 'thiennam.nguyen.18007',
+        url: 'https://www.facebook.com/thiennam.nguyen.18007'
+    },
+    {
+        name: 'Reddit',
+        url_name: 'Turbulent-Ad-759',
+        url: 'https://www.reddit.com/user/Turbulent-Ad-759'
+    },
+    {
+        name: 'Github',
+        url_name: ''
     }
-].sort()
+].sort((a, b) => {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+})
 
 const linksList = document.getElementById('links')
 linksList.innerHTML = links.map(link => {
