@@ -68,8 +68,27 @@ const links = [
     }
     return 0;
 })
+function editLinkCard(string, index, condition) {
+    const linkTitle = document.getElementById(`lk-${index}`)
+    const logo = document.getElementById(`logo-${index}`)
+    if (condition) {
+        logo.style.visibility = 'hidden'
+        logo.style.display = 'none'
+        linkTitle.style.fontSize = '20px'
+        linkTitle.style.margin = 'auto'
+        condition = false
+    } else {
+        logo.style.visibility = 'visible'
+        logo.style.display = 'block'
+        linkTitle.style.fontSize = '2em'
+        linkTitle.style.margin = 'none'
+       condition = true
+    }
+    console.log(localStorage)
+    linkTitle.innerText = string
+}
 
 const linksList = document.getElementById('links')
-linksList.innerHTML = links.map(link => {
-    return `<div class="link-card" onclick="window.open('${link.url}', '_blank')"><div class='logo' style="background-image: url('${link.logoURL}');"></div><h1 class='link-title'>${link.name}</h1></div>`
+linksList.innerHTML = links.map((link, index) => {
+    return `<div class="link-card" onclick="window.open('${link.url}', '_blank')" onmouseover="editLinkCard('${link.url_name}', '${index}', true)" onmouseout="editLinkCard('${link.name}', '${index}', false)"><div class='logo' id='logo-${index}' style="background-image: url('${link.logoURL}');"></div><h1 class='link-title' id='lk-${index}'>${link.name}</h1></div>`
 }).join("<br>")
