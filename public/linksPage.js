@@ -9,7 +9,7 @@ const links = [
         name: 'Discord',
         url_name: 'nguyen.thien.nam',
         url: 'https://discord.com/users/1059384621550288907',
-        logoURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Discord_logo.png/600px-Discord_logo.png'
+        logoURL: 'https://seeklogo.com/images/D/discord-logo-7A1EC3216C-seeklogo.com.png'
     },
     {
         name: 'Instagram',
@@ -70,25 +70,37 @@ const links = [
 })
 function editLinkCard(string, index, condition) {
     const linkTitle = document.getElementById(`lk-${index}`)
-    const logo = document.getElementById(`logo-${index}`)
+    const linkCard = document.getElementById(`lc-${index}`)
     if (condition) {
-        logo.style.visibility = 'hidden'
-        logo.style.display = 'none'
-        linkTitle.style.fontSize = '20px'
-        linkTitle.style.margin = 'auto'
+        linkCard.style.backgroundSize = '300px'
+        linkCard.style.backgroundPosition = 'center'
+        linkCard.style.backgroundColor = 'teal'
         condition = false
     } else {
-        logo.style.visibility = 'visible'
-        logo.style.display = 'block'
-        linkTitle.style.fontSize = '2em'
-        linkTitle.style.margin = 'none'
-       condition = true
+        linkCard.style.backgroundColor = ''
+        linkCard.style.backgroundSize = '100px'
+        linkCard.style.backgroundPosition = 'center 15px'
+        condition = true
     }
-    console.log(localStorage)
     linkTitle.innerText = string
 }
 
 const linksList = document.getElementById('links')
 linksList.innerHTML = links.map((link, index) => {
-    return `<div class="link-card" onclick="window.open('${link.url}', '_blank')" onmouseover="editLinkCard('${link.url_name}', '${index}', true)" onmouseout="editLinkCard('${link.name}', '${index}', false)"><div class='logo' id='logo-${index}' style="background-image: url('${link.logoURL}');"></div><h1 class='link-title' id='lk-${index}'>${link.name}</h1></div>`
-}).join("<br>")
+    return `
+    <div 
+        class="link-card" 
+        id="lc-${index}" 
+        onclick="window.open('${link.url}', '_blank')" 
+        onmouseover="editLinkCard('${link.name}', '${index}', true)" 
+        onmouseout="editLinkCard('${link.url_name}', '${index}', false)">
+    <h1 
+        class='link-title' 
+        id='lk-${index}'>${link.url_name}
+    </h1>
+    </div>`
+}).join("<br>") 
+for(const index in links) {
+    const linkCard = document.getElementById(`lc-${index}`)
+    linkCard.style.backgroundImage = `url(${links[index].logoURL})`
+}
