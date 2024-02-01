@@ -4,7 +4,7 @@ let condition = false
  */
 const box = document.getElementsByClassName('box').item(0)
 box.style.opacity = '0'
-box.addEventListener('mouseover', () => {
+window.onfocus(() => {
     if (!condition) {
         condition = true
         console.log('works')
@@ -16,5 +16,5 @@ function changeLocation(href) {
     box.style.opacity = '0'
     setTimeout(() => {
         window.location.href = href
-    }, 500)
+    }, 490)
 }
