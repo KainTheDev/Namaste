@@ -4,7 +4,7 @@ let condition = false
  */
 const box = document.getElementsByClassName('box').item(0)
 box.style.opacity = '0'
-window.onfocus(() => {
+window.onmouseover(() => {
     if (!condition) {
         condition = true
         console.log('works')
