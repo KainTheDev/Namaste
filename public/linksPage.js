@@ -74,7 +74,6 @@ function editLinkCard(string, index, condition) {
     if (condition) {
         linkCard.style.backgroundSize = '300px'
         linkCard.style.backgroundPosition = 'center'
-        linkCard.style.backgroundColor = 'teal'
         condition = false
     } else {
         linkCard.style.backgroundColor = ''
