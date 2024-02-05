@@ -85,21 +85,20 @@ function editLinkCard(string, index, condition) {
 }
 
 const linksList = document.getElementById('links')
-linksList.innerHTML = links.map((link, index) => {
-    return `
+links.forEach((link, index) => {
+    const imageURL = links[index].logoURL
+    console.log(imageURL)
+    linksList.innerHTML += `
     <div 
         class="link-card" 
         id="lc-${index}" 
         onclick="window.open('${link.url}', '_blank')" 
         onmouseover="editLinkCard('${link.name}', '${index}', true)" 
-        onmouseout="editLinkCard('${link.url_name}', '${index}', false)">
+        onmouseout="editLinkCard('${link.url_name}', '${index}', false)"
+        style='background-image: url("${imageURL}")'>
     <h1 
         class='link-title' 
         id='lk-${index}'>${link.url_name}
     </h1>
     </div>`
-}).join("<br>") 
-for(const index in links) {
-    const linkCard = document.getElementById(`lc-${index}`)
-    linkCard.style.backgroundImage = `url(${links[index].logoURL})`
-}
+})

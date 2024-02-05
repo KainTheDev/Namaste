@@ -1,17 +1,11 @@
-let condition = false
-/**
- * @type {Element}
- */
-const box = document.getElementsByClassName('box').item(0)
-box.style.opacity = '0'
-box.style.pointerEvents = 'none'
-
-setTimeout(() => { box.style.opacity = '1', box.style.pointerEvents = '' }, 1000)
-
 function changeLocation(href) {
-    box.style.opacity = '0'
-    box.style.pointerEvents = 'none'
+    document.body.innerHTML += '<div class="blurBackground" id="BLUR_BG"><span class="loader"></span></div>'
     setTimeout(() => {
         window.location.href = href
     }, 500)
 }
+
+window.addEventListener('focus', () => {
+    const blurBackground = document.getElementById('BLUR_BG')
+    blurBackground.remove()
+})
