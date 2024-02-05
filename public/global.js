@@ -19,10 +19,3 @@ function changeLocation(href) {
         window.location.href = href
     }, 500)
 }
-
-const head = document.getElementsByTagName('head').item(0)
-head.innerHTML += (`
-    <title>NAMASTE</title>
-    <link rel="icon" href="assets/NAMASTE-LOGO.png">
-    <link rel="stylesheet" href="/style.css">
-`)
