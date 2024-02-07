@@ -1,3 +1,10 @@
+const loadingScreen = document.getElementById('BLUR_BG')
+document.body.style.overflow = 'hidden'
+setTimeout(() => {
+    loadingScreen.style.opacity = 0
+    document.body.style.overflow = ''
+}, 500)
+setTimeout(() => loadingScreen.style.display = 'none', 700)
 fetch('/api/load_data?file=links', {
     headers: {
         authorization: '15092020'

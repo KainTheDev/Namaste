@@ -1,11 +1,3 @@
 function changeLocation(href) {
-    document.body.innerHTML += '<div class="blurBackground" id="BLUR_BG"><span class="loader"></span></div>'
-    setTimeout(() => {
-        window.location.href = href
-    }, 1000)
+    setTimeout(() => {window.location.href = href}, 500)
 }
-
-window.addEventListener('blur', () => {
-    const blurBackground = document.getElementById('BLUR_BG')
-    if(blurBackground) blurBackground.remove()
-})

@@ -10,11 +10,15 @@
 </head>
 
 <body>
-    <div class="box">
-        <h1 class="title">social media</h1>
-        <div id="links"></div>
-        <button class="primary" onclick="changeLocation('/main')">Back to
-            main</button>
+    <div class="loading-screen" id="BLUR_BG"><span class="loader"></span></div>
+    <div class="slider">
+        <div class='switchSlideButton'><button class="secondary">communities</button><button class="secondary">pages</button></div>
+        <div class="box">
+            <h1 class="title">social media</h1>
+            <div id="links"></div>
+            <button class="primary" onclick="changeLocation('/main')">Back to
+                main</button>
+        </div>
     </div>
 </body>
 <script src="/linksPage.js"></script>
