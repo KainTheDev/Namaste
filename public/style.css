@@ -196,11 +196,11 @@ div.blurBackground {
     margin: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: not-allowed;
+    backdrop-filter: blur(1px);
 }
 
 @keyframes rotation {

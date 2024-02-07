@@ -5,7 +5,7 @@ function changeLocation(href) {
     }, 1000)
 }
 
-window.addEventListener('focus', () => {
+window.addEventListener('blur', () => {
     const blurBackground = document.getElementById('BLUR_BG')
-    blurBackground.remove()
+    if(blurBackground) blurBackground.remove()
 })
