@@ -1,28 +1,43 @@
 const loadingScreen = document.getElementById('BLUR_BG')
 document.body.style.overflow = 'hidden'
-setTimeout(() => {
-    loadingScreen.style.opacity = 0
-    document.body.style.overflow = ''
-}, 500)
 setTimeout(() => loadingScreen.style.display = 'none', 700)
 fetch('/api/load_data?file=links', {
     headers: {
         authorization: '15092020'
     }
 }).then(async (response) => {
-    const data = JSON.stringify(await response.json())
-    localStorage.setItem('links', data)
+    const data = await response.json()
+    loadingScreen.style.opacity = 0
+    document.body.style.overflow = ''
+    const links = data.sort((a, b) => {
+        if (a.name < b.name) {
+            return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
+    })
+
+    const linksList = document.getElementById('links')
+    links.forEach((link, index) => {
+        const imageURL = links[index].logoURL
+        linksList.innerHTML += `
+    <div 
+        class="link-card" 
+        id="lc-${index}" 
+        onclick="window.open('${link.url}', '_blank')" 
+        onmouseover="editLinkCard('${link.name}', '${index}', true)" 
+        onmouseout="editLinkCard('${link.url_name}', '${index}', false)"
+        style='background-image: url("${imageURL}")'>
+    <h1 
+        class='link-title' 
+        id='lk-${index}'>${link.url_name}
+    </h1>
+    </div>`
+    })
 })
-const data = localStorage.getItem('links')
-const links = JSON.parse(data).sort((a, b) => {
-    if (a.name < b.name) {
-        return -1;
-    }
-    if (a.name > b.name) {
-        return 1;
-    }
-    return 0;
-})
+
 function editLinkCard(string, index, condition) {
     const linkTitle = document.getElementById(`lk-${index}`)
     const linkCard = document.getElementById(`lc-${index}`)
@@ -38,21 +53,3 @@ function editLinkCard(string, index, condition) {
     }
     linkTitle.innerText = string
 }
-
-const linksList = document.getElementById('links')
-links.forEach((link, index) => {
-    const imageURL = links[index].logoURL
-    linksList.innerHTML += `
-    <div 
-        class="link-card" 
-        id="lc-${index}" 
-        onclick="window.open('${link.url}', '_blank')" 
-        onmouseover="editLinkCard('${link.name}', '${index}', true)" 
-        onmouseout="editLinkCard('${link.url_name}', '${index}', false)"
-        style='background-image: url("${imageURL}")'>
-    <h1 
-        class='link-title' 
-        id='lk-${index}'>${link.url_name}
-    </h1>
-    </div>`
-})
