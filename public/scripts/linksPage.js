@@ -40,20 +40,38 @@ function loadData({ box, fileName }) {
         })
     })
 }
-const switchButton = document.getElementsByClassName('secondary').item(0)
-switchButton.addEventListener('click', () => {
-    box.style.opacity = 0
-    setTimeout(() => {
-        document.getElementById('links').innerHTML = ''
-        const currentTitle = titles[1]
-        const nextTitle = titles[2]
-        switchButton.innerText = nextTitle
-        title.innerText = currentTitle
-        loadData({ box, fileName: currentTitle })
-        const usedTitle = titles.shift()
-        titles.push(usedTitle)
-    }, 500)
-})
+const switchButton = document.getElementsByClassName('secondary')
+
+function disableButton(button) {
+    button.style.cursor = 'not-allowed';
+    button.style.opacity = '0.2';
+    button.disabled = true;
+    button.style.pointerEvents = 'none';
+}
+
+function enableButton(button) {
+    button.style.cursor = 'pointer';
+    button.style.opacity = '1';
+    button.disabled = false;
+    button.style.pointerEvents = '';
+}
+
+for (const button of switchButton) {
+    if (button.innerText === title.innerText) disableButton(button);
+    button.addEventListener('click', () => {
+        box.style.opacity = 0
+        setTimeout(() => {
+            new Array(...switchButton).forEach(enableButton)
+            button.style.transition = '0s'
+            document.getElementById('links').innerHTML = ''
+            disableButton(button)
+            title.innerText = button.innerText
+            loadData({ box, fileName: button.innerText })
+            const usedTitle = titles.shift()
+            titles.push(usedTitle)
+        }, 400)
+    })
+}
 
 function editLinkCard(string, index, condition) {
     const linkTitle = document.getElementById(`lk-${index}`)

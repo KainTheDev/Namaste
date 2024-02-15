@@ -59,10 +59,18 @@ a:hover {
 }
 
 /* containers */
-.switchSlideButton {
+.navigation-bar {
     display: flex;
     flex-direction: row;
     column-gap: 20px;
+    background-color: rgba(0, 0, 0, 0.503);
+    justify-content: center;
+    width: fit-content;
+    height: 100px;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px 30px;
 }
 
 .link-card {
@@ -127,7 +135,11 @@ a:hover {
 }
 
 .popup .timeline-heading {
-    font-size: auto;
+    font-size: 40px;
+}
+
+.popup .timeline-section p {
+    font-size: 25px;
 }
 
 .box {
@@ -167,7 +179,7 @@ a:hover {
     background-color: rgb(73, 0, 0);
     box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    max-width: 700px;
+    max-width: 1000px;
     width: auto;
     margin-top: 20px;
     border-radius: 10px;
@@ -205,16 +217,14 @@ button.primary {
     background-color: transparent;
     color: white;
     border: solid white 3px;
-    outline: solid transparent;
-    transition: 0.5s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 button.primary:hover {
     box-shadow: inset 0px 0px 30px 0px white;
-    outline-offset: -20px;
     color: red;
-    outline: solid red 4px;
     border: solid red 4px;
+    background-color: rgba(255, 255, 255, 0.218);
 }
 
 button.primary:active {
@@ -226,34 +236,20 @@ button.secondary {
     color: white;
     background-color: transparent;
     border: solid white 3px;
+    border-radius: 20px;
     width: 300px;
     height: 70px;
     font-size: 15px;
     font-weight: 1000;
     text-transform: uppercase;
     transition: 0.4s ease-in-out;
+    transition-property: background-color, color;
     text-align: center;
-}
-
-button.secondary::after {
-    content: ''
 }
 
 button.secondary:hover {
     background-color: white;
     color: red;
-}
-
-button.secondary:hover::after {
-    content: '\003E';
-    font-size: 20px;
-    margin-left: 20px;
-}
-
-button.secondary:active {
-    background-color: red;
-    color: white;
-    transition: 0s;
 }
 
 .imageButton {
@@ -383,6 +379,13 @@ button.secondary:active {
     .imageButton h2 {
         scale: 0.7;
     }
+    .link-card {
+        width: 200px;
+    }
+
+    #links {
+        width: 50px;    
+    }
 }
 
 @media only screen and (max-height: 600px) {
@@ -395,5 +398,9 @@ button.secondary:active {
         min-width: 190px;
         height: 50px;
         font-size: 13px;
+    }
+
+    .link-card {
+        margin: 5px;
     }
 }
