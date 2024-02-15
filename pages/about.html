@@ -10,35 +10,37 @@
 </head>
 
 <body>
-    <div class="box" id="about">
+    <div class="popup"></div>
+    </div>
+    <div class="box about" id="about">
         <h1 class="title">Hello, I'm <span class="highlight">Nam</span>.</h1>
-        <p style="font-size: 20px; margin-top: 20px;">
+        <p>
             My full name is <span class="highlight">Nguyen Thien Nam</span>, and I call <span
                 class="highlight important">Vietnam</span> my beloved home.
         </p>
 
         <!-- Year 201X - 202X -->
-        <section class="timeline-section">
+        <section class="timeline-section" id="#1">
             <h2 class="timeline-heading">Programming and Creative Skills (2022)</h2>
-            <p style="font-size: 20px; margin-top: 20px;">
+            <p>
                 My journey in programming and coding spans two years, and I am determined to improve my skills, just
                 like my effort in art and music.
             </p>
         </section>
 
         <!-- Year 2022 - 2024 -->
-        <section class="timeline-section">
+        <section class="timeline-section" id="#2">
             <h2 class="timeline-heading">Art and Music Journey (2022 - 2024)</h2>
-            <p style="font-size: 20px; margin-top: 20px;">
+            <p>
                 Drawing since the age of 5 and embracing the piano two years later, I ventured into music creation,
                 focusing mainly on piano compositions.
             </p>
         </section>
 
         <!-- Year 2024 -->
-        <section class="timeline-section">
+        <section class="timeline-section" id="#3">
             <h2 class="timeline-heading">Film-making (2024)</h2>
-            <p style="font-size: 20px; margin-top: 20px;">
+            <p>
                 In the realm of film-making, I've directed a film titled <span class="highlight">"The Winter
                     Leaf,"</span> my very first film. All my films are available on my
                 <a href="https://www.youtube.com/channel/UCuBqPJLikRQ5ILmeGfouvGA">Youtube channel</a>.
@@ -48,7 +50,7 @@
             </p>
             </p>
         </section>
-        <p style="font-size: 20px; margin-top: 20px;">
+        <p>
             For more details, feel free to visit my <a href="https://gravatar.com/nguyenthiennam2009">Gravatar</a>
             profile.
         </p>
@@ -56,6 +58,7 @@
         <button class="primary" onclick="changeLocation('/main')">Back to main</button>
     </div>
 </body>
-<script src="/global.js"></script>
+<script src="scripts/global.js"></script>
+<script src="scripts/aboutPage.js"></script>
 
 </html>

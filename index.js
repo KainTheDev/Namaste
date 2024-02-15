@@ -15,11 +15,10 @@ for (const page of pages) {
 for (const api of apiScripts) {
     const executeAPI = require(join(process.cwd(), 'api', api))
     app.get(`/api/${api.split('.')[0]}`, async (req, res) => {
-        const { authorization } = req.headers
-        if(authorization === process.env.passKey) {
+        try {
             await executeAPI(req, res)
-        }else{
-            res.redirect('/main')
+        } catch (e) {
+            return;
         }
     })
 }

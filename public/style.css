@@ -59,12 +59,6 @@ a:hover {
 }
 
 /* containers */
-.slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .switchSlideButton {
     display: flex;
     flex-direction: row;
@@ -84,11 +78,11 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    transition: 0.5s ease-in;
+    transition: 500ms ease-in-out;
 }
 
 .link-card:hover {
-    box-shadow: 0px 0px 5px red;
+    box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.5);
 
     .link-title {
         font-size: 35px;
@@ -107,28 +101,97 @@ a:hover {
     margin-bottom: 20px;
     border-radius: 15px;
     justify-content: center;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    display: none;
+}
+
+.popup .timeline-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup .timeline-section:hover {
+    cursor: zoom-out;
+}
+
+.popup .timeline-heading {
+    font-size: auto;
 }
 
 .box {
-    margin: auto;
-    padding: 10px;
-    align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    transition: 500ms ease-in-out;
+    align-items: center;
+}
+
+.box.about p {
+    font-size: 22px;
+}
+
+.box.links {
+    transition: 500ms;
+}
+
+.box.main {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    row-gap: 2px;
+}
+
+.box.works {
+    row-gap: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.timeline-section {
+    background-color: rgb(73, 0, 0);
+    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 700px;
+    width: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 300ms;
+}
+
+.timeline-section p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.timeline-section:hover {
+    box-shadow: inset 0px 0px 30px white;
+    cursor: zoom-in;
+}
+
+.timeline-heading {
+    color: #E64B4B;
+    text-shadow: 1px 1px 5px #860000;
 }
 
 /* buttons */
-
-.buttonStack {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    display: grid;
-    justify-content: center;
-    row-gap: 10px;
+button {
+    cursor: pointer;
 }
 
 button.primary {
@@ -146,21 +209,45 @@ button.primary {
     transition: 0.5s ease-in-out;
 }
 
+button.primary:hover {
+    box-shadow: inset 0px 0px 30px 0px white;
+    outline-offset: -20px;
+    color: red;
+    outline: solid red 4px;
+    border: solid red 4px;
+}
+
+button.primary:active {
+    background-color: #4e0000;
+    transition: 0s;
+}
+
 button.secondary {
     color: white;
     background-color: transparent;
     border: solid white 3px;
-    width: 200px;
-    height: 50px;
+    width: 300px;
+    height: 70px;
     font-size: 15px;
-    transition: 0.2s ease-in-out;
     font-weight: 1000;
     text-transform: uppercase;
+    transition: 0.4s ease-in-out;
+    text-align: center;
+}
+
+button.secondary::after {
+    content: ''
 }
 
 button.secondary:hover {
     background-color: white;
     color: red;
+}
+
+button.secondary:hover::after {
+    content: '\003E';
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 button.secondary:active {
@@ -169,29 +256,59 @@ button.secondary:active {
     transition: 0s;
 }
 
-button.primary:hover {
-    box-shadow: inset 0px 0px 30px 0px white;
-    outline-offset: -20px;
-    outline: solid white 2px;
-    border: solid rgba(255, 0, 0, 0.5) 4px;
+.imageButton {
+    background-color: transparent;
+    border: solid white 10px;
+    width: 90vw;
+    height: 500px;
+    background-position: center;
+    position: relative;
+    transition: 0.5s ease-in-out;
+    transition-property: box-shadow, background-color;
+    margin: 10px;
+    background-color: #0000003e;
 }
 
-button.primary:active {
-    background-color: #860000;
+.imageButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--preview-image);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: blur(5px)
+}
+
+.imageButton:hover {
+    box-shadow: inset 0px 0px 50px white;
+}
+
+.imageButton:active {
+    background-color: rgba(255, 255, 255, 0.217);
     transition: 0s;
 }
 
-.timeline-section {
-    background-color: rgba(0, 0, 0, 0.295);
-    padding: 20px;
-    max-width: 700px;
-    margin-top: 20px;
-    border-radius: 10px;
+.imageButton h1 {
+    color: white;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
-.timeline-heading {
-    color: #E64B4B;
-    text-shadow: 1px 1px 5px #860000;
+.imageButton h2 {
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    text-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -253,28 +370,30 @@ button.primary:active {
 }
 
 @media only screen and (max-width: 600px) {
-    .logo {
-        width: 350px;
-        height: 350px;
-    }
-}
 
-@media only screen and (max-width: 400px) {
-    .logo {
-        width: 300px;
-        height: 300px;
-    }
-
-    button.primary {
-        font-size: 17px;
-        width: 250px;
-        height: 70px;
+    .imageButton h1,
+    .imageButton h2 {
+        scale: 0.8;
     }
 }
 
 @media only screen and (max-width: 350px) {
+
+    .imageButton h1,
+    .imageButton h2 {
+        scale: 0.7;
+    }
+}
+
+@media only screen and (max-height: 600px) {
     .logo {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
+    }
+
+    button.primary {
+        min-width: 190px;
+        height: 50px;
+        font-size: 13px;
     }
 }
