@@ -1,5 +1,5 @@
 const box = document.getElementsByClassName('box').item(0)
-fetch('/json/works.json').then(async response => {
+fetch('json/works.json').then(async response => {
     const data = await response.json()
     for (const work of data) {
         box.innerHTML += `
