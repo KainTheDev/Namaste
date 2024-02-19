@@ -18,7 +18,7 @@ for (const api of apiScripts) {
         try {
             await executeAPI(req, res)
         } catch (e) {
-            return;
+            res.status(404).json({error: `${e}`})
         }
     })
 }
