@@ -1,0 +1,16 @@
+/* Navigation Bar Styles */
+
+/* Navigation Bar */
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    background-color: rgba(0, 0, 0, 0.503);
+    justify-content: center;
+    width: fit-content;
+    height: 100px;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px 30px;
+}

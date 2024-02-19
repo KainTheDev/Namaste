@@ -1,0 +1,45 @@
+/* Media Queries */
+
+/* Small Screens */
+@media only screen and (max-width: 600px) {
+
+    .imageButton h1,
+    .imageButton h2 {
+        scale: 0.8;
+    }
+}
+
+/* Extra Small Screens */
+@media only screen and (max-width: 350px) {
+
+    .imageButton h1,
+    .imageButton h2 {
+        scale: 0.7;
+    }
+
+    .link-card {
+        width: 200px;
+    }
+
+    #links {
+        width: 50px;
+    }
+}
+
+/* Low Height Screens */
+@media only screen and (max-height: 600px) {
+    .logo {
+        width: 220px;
+        height: 220px;
+    }
+
+    button.primary {
+        min-width: 190px;
+        height: 50px;
+        font-size: 13px;
+    }
+
+    .link-card {
+        margin: 5px;
+    }
+}

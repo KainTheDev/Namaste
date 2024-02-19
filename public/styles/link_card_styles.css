@@ -1,0 +1,29 @@
+/* Link Card Styles */
+
+/* Link Card */
+.link-card {
+    background-color: #8600006b;
+    background-position-y: center;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center 15px;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: 500ms ease-in-out;
+}
+
+/* Link Card Hover */
+.link-card:hover {
+    box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+
+.link-card:hover .link-title {
+    font-size: 35px;
+    transform: translate(0px, 0px);
+    text-shadow: 0px 0px 5px #860000, 0px 0px 10px #E64B4B, 0px 0px 15px #E64B4B, 0px 0px 20px #E64B4B;
+}

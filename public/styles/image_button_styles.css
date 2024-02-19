@@ -1,0 +1,38 @@
+/* Image Button Styles */
+
+/* Image Button */
+.imageButton {
+    background-color: transparent;
+    border: solid white 10px;
+    width: 90vw;
+    height: 500px;
+    background-position: center;
+    position: relative;
+    transition: 0.5s ease-in-out;
+    transition-property: box-shadow, background-color;
+    margin: 10px;
+    background-color: #0000003e;
+}
+
+.imageButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--preview-image);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: blur(5px)
+}
+
+.imageButton:hover {
+    box-shadow: inset 0px 0px 50px white;
+}
+
+.imageButton:active {
+    background-color: rgba(255, 255, 255, 0.217);
+    transition: 0s;
+}

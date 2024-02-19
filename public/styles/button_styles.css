@@ -1,0 +1,49 @@
+/* Button Styles */
+
+/* Primary Button */
+button.primary {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 10px;
+    height: 80px;
+    width: max-content;
+    min-width: 300px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: white;
+    border: solid red 3px;
+    transition: 0.4s ease-in-out;
+}
+
+button.primary:hover {
+    box-shadow: inset 0px 0px 30px 0px white;
+    color: red;
+    border: solid white 3px;
+    background-color: rgba(255, 255, 255, 0.218);
+}
+
+button.primary:active {
+    background-color: #4e0000;
+    transition: 0s;
+}
+
+/* Secondary Button */
+button.secondary {
+    color: white;
+    background-color: transparent;
+    border: solid white 3px;
+    border-radius: 20px;
+    width: 300px;
+    height: 70px;
+    font-size: 15px;
+    font-weight: 1000;
+    text-transform: uppercase;
+    transition: 0.4s ease-in-out;
+    transition-property: background-color, color;
+    text-align: center;
+}
+
+button.secondary:hover {
+    background-color: white;
+    color: red;
+}

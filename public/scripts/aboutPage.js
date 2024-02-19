@@ -1,13 +1,15 @@
 const sections = document.getElementsByClassName('timeline-section');
 const popup = document.getElementsByClassName('popup').item(0)
 
-const isMobile = window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+const isMobile = window.matchMedia("(max-height: 600px)").matches;
 
 if (!isMobile) {
     for (const { id } of sections) {
         if (!id) continue;
         const section = document.getElementById(id);
-        section.addEventListener('click', () => {
+        section.addEventListener('click', (event) => {
+            const {target} = event
+            if(target.tagName === "A") return;
             popup.style.display = 'block'
             popup.style.opacity = '1'
             popup.innerHTML = section.outerHTML

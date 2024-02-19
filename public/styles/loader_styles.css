@@ -1,0 +1,34 @@
+/* Loader Styles */
+
+/* Loader */
+.loader {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    border-width: 20px;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: 500ms;
+    background-color: rgba(0, 0, 0, 0.318);
+    z-index: 1;
+    cursor: not-allowed;
+    transition: 0.3s all;
+}

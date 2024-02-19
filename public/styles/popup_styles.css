@@ -1,0 +1,34 @@
+/* Pop-up Styles */
+
+/* Pop-up Container */
+.popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    display: none;
+}
+
+/* Pop-up Timeline Heading */
+.popup .timeline-heading {
+    font-size: 40px;
+}
+
+/* Pop-up Timeline Section */
+.popup .timeline-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup .timeline-section p {
+    font-size: 25px;
+}
+
+.popup .timeline-section:hover {
+    cursor: zoom-out;
+}

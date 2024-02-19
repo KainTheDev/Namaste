@@ -1,0 +1,23 @@
+/* Timeline Section Styles */
+
+/* Timeline Section */
+.timeline-section {
+    background-color: rgb(73, 0, 0);
+    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 1000px;
+    width: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 300ms;
+}
+
+.timeline-section:hover {
+    box-shadow: inset 0px 0px 30px white;
+    cursor: zoom-in;
+}
+
+.timeline-section p {
+    font-size: 20px;
+    margin-top: 20px;
+}

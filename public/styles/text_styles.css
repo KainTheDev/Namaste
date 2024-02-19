@@ -1,0 +1,56 @@
+/* Text Styles */
+
+/* Title */
+.title {
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+/* Link Title */
+.link-title {
+    color: white;
+    margin: 50px auto;
+    transform: translate(0, 50px);
+    font-size: 20px;
+    transition: text-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Highlighted Text */
+.highlight {
+    color: #9e4217;
+}
+
+/* Important Highlight */
+.highlight.important {
+    color: red;
+}
+
+/* Warning Highlight */
+.highlight.warning {
+    color: yellow;
+}
+
+/* Paragraph */
+p {
+    color: white;
+    font-weight: bolder;
+}
+
+/* Links */
+a {
+    color: rgb(66, 66, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Timeline Heading */
+.timeline-heading {
+    color: #E64B4B;
+    text-shadow: 1px 1px 5px #860000;
+}

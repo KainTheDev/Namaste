@@ -1,0 +1,15 @@
+/* Links Container Styles */
+
+/* Links Container */
+#links {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.584);
+    max-width: 1000px;
+    padding: 10px;
+    height: auto;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    cursor: pointer;
+}
