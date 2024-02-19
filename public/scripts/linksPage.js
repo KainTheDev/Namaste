@@ -1,46 +1,51 @@
-const loadingScreen = document.getElementById('BLUR_BG')
-const title = document.getElementsByClassName('title').item(0)
-const box = document.getElementsByClassName('box').item(0)
-setTimeout(() => loadData({ box, fileName: 'social media' }), 500)
-const titles = ["social media", 'communities', 'pages']
+const loadingScreen = document.getElementById('BLUR_BG');
+const title = document.querySelector('.title');
+const box = document.querySelector('.box');
+const linksList = document.getElementById('links');
+const switchButtons = document.querySelectorAll('.secondary');
+const baseURL = '/api/load_data?file=';
 
-function loadData({ box, fileName }) {
-    fetch(`/api/load_data?file=${fileName.split(' ').join('_')}`).then(async (response) => {
-        loadingScreen.style.opacity = 0
-        document.body.style.overflow = ''
-        setTimeout(() => loadingScreen.style.display = 'none', 500)
-        const data = await response.json()
-        box.style.opacity = 1
-        const links = data.sort((a, b) => {
-            if (a.name < b.name) {
-                return -1;
-            }
-            if (a.name > b.name) {
-                return 1;
-            }
-            return 0;
-        })
+setTimeout(() => loadData(title.innerText), 500);
 
-        const linksList = document.getElementById('links')
-        links.forEach((link, index) => {
-            const imageURL = links[index].logoURL
-            linksList.innerHTML += `
-        <div 
-            class="link-card" 
-            id="lc-${index}" 
-            onclick="window.open('${link.url}', '_blank')" 
-            onmouseover="editLinkCard('${link.name}', '${index}', true)" 
-            onmouseout="editLinkCard('${link.url_name}', '${index}', false)"
-            style='background-image: url("${imageURL}")'>
-        <h1 
-            class='link-title' 
-            id='lk-${index}'>${link.url_name}
-        </h1>
-        </div>`
-        })
-    })
+switchButtons.forEach(button => {
+    if (button.innerText === title.innerText) disableButton(button);
+    button.addEventListener('click', () => {
+        const newFileName = button.innerText;
+        if (newFileName !== title.innerText) {
+            box.style.opacity = 0;
+            setTimeout(() => {
+                switchButtons.forEach(enableButton);
+                disableButton(button);
+                title.innerText = newFileName;
+                loadData(newFileName);
+            }, 400);
+        }
+    });
+});
+
+function loadData(fileName) {
+    fetch(`${baseURL}${fileName.split(' ').join('_')}`)
+    .then(response => response.json())
+    .then(data => {
+        loadingScreen.style.opacity = 0;
+        document.body.style.overflow = '';
+        setTimeout(() => loadingScreen.style.display = 'none', 500);
+        box.style.opacity = 1;
+        linksList.innerHTML = buildLinksHTML(data);
+    });
 }
-const switchButton = document.getElementsByClassName('secondary')
+
+function buildLinksHTML(links) {
+    return links.map((link, index) => {
+        return `
+            <div class="link-card" id="lc-${index}" onclick="window.open('${link.url}', '_blank')"
+                onmouseover="editLinkCard('${link.name}', '${index}', true)"
+                onmouseout="editLinkCard('${link.url_name}', '${index}', false)"
+                style="background-image: url('${link.logoURL}')">
+                <h1 class='link-title' id='lk-${index}'>${link.url_name}</h1>
+            </div>`;
+    }).join('');
+}
 
 function disableButton(button) {
     button.style.cursor = 'not-allowed';
@@ -56,35 +61,15 @@ function enableButton(button) {
     button.style.pointerEvents = '';
 }
 
-for (const button of switchButton) {
-    if (button.innerText === title.innerText) disableButton(button);
-    button.addEventListener('click', () => {
-        box.style.opacity = 0
-        setTimeout(() => {
-            new Array(...switchButton).forEach(enableButton)
-            button.style.transition = '0s'
-            document.getElementById('links').innerHTML = ''
-            disableButton(button)
-            title.innerText = button.innerText
-            loadData({ box, fileName: button.innerText })
-            const usedTitle = titles.shift()
-            titles.push(usedTitle)
-        }, 400)
-    })
-}
-
 function editLinkCard(string, index, condition) {
-    const linkTitle = document.getElementById(`lk-${index}`)
-    const linkCard = document.getElementById(`lc-${index}`)
+    const linkTitle = document.getElementById(`lk-${index}`);
+    const linkCard = document.getElementById(`lc-${index}`);
     if (condition) {
-        linkCard.style.backgroundSize = '300px'
-        linkCard.style.backgroundPosition = 'center'
-        condition = false
+        linkCard.style.backgroundSize = '300px';
+        linkCard.style.backgroundPosition = 'center';
     } else {
-        linkCard.style.backgroundColor = ''
-        linkCard.style.backgroundSize = '100px'
-        linkCard.style.backgroundPosition = 'center 15px'
-        condition = true
+        linkCard.style.backgroundSize = '100px';
+        linkCard.style.backgroundPosition = 'center 15px';
     }
-    linkTitle.innerText = string
+    linkTitle.innerText = string;
 }

@@ -1,3 +1,3 @@
 function changeLocation(href) {
-    setTimeout(() => {window.location.href = href}, 500)
+    setTimeout(() => {window.open(href, '_self')}, 500)
 }
