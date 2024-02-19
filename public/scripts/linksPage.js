@@ -3,7 +3,6 @@ const title = document.querySelector('.title');
 const box = document.querySelector('.box');
 const linksList = document.getElementById('links');
 const switchButtons = document.querySelectorAll('.secondary');
-const baseURL = '/api/load_data?file=';
 
 setTimeout(() => loadData(title.innerText), 500);
 
@@ -24,7 +23,7 @@ switchButtons.forEach(button => {
 });
 
 function loadData(fileName) {
-    fetch(`${baseURL}${fileName.split(' ').join('_')}`)
+    fetch(`json/${fileName.split(' ').join('_')}.json`)
     .then(response => response.json())
     .then(data => {
         loadingScreen.style.opacity = 0;

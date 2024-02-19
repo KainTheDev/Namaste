@@ -5,21 +5,10 @@ const { join } = require('path');
 const app = express();
 const port = process.env.PORT || 4000;
 const pages = readdirSync(join(process.cwd(), 'pages'))
-const apiScripts = readdirSync(join(process.cwd(), 'api'))
 app.use(express.static(join(process.cwd(), 'public')))
 for (const page of pages) {
     app.get(`/${page.split('.')[0]}`, (req, res) => {
         res.sendFile(join(process.cwd(), 'pages', page))
-    })
-}
-for (const api of apiScripts) {
-    const executeAPI = require(join(process.cwd(), 'api', api))
-    app.get(`/api/${api.split('.')[0]}`, async (req, res) => {
-        try {
-            await executeAPI(req, res)
-        } catch (e) {
-            res.status(404).json({error: `${e}`})
-        }
     })
 }
 app.get('/*', (req, res) => {
