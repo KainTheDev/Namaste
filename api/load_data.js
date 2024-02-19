@@ -8,5 +8,6 @@ const { join } = require("path")
 module.exports = (req, res) => {
     const {file} = req.query
     const data = require(join(process.cwd(), 'json', file))
+    console.log(data)
     res.json(data)
 }
