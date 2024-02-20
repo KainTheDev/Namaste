@@ -2,21 +2,10 @@
 
 /* Small Screens */
 @media only screen and (max-width: 600px) {
-
-    .imageButton h1,
-    .imageButton h2 {
-        scale: 0.8;
-    }
 }
 
 /* Extra Small Screens */
 @media only screen and (max-width: 350px) {
-
-    .imageButton h1,
-    .imageButton h2 {
-        scale: 0.7;
-    }
-
     .link-card {
         width: 200px;
     }
@@ -34,7 +23,7 @@
     }
 
     button.primary {
-        min-width: 190px;
+        min-width: 100px;
         height: 50px;
         font-size: 13px;
     }

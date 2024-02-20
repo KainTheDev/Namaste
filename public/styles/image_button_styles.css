@@ -36,3 +36,26 @@
     background-color: rgba(255, 255, 255, 0.217);
     transition: 0s;
 }
+
+
+.imageButton h1 {
+    color: white;
+    font-size: 6vw;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+}
+
+.imageButton h2 {
+    color: white;
+    font-size: 3vw;
+    font-weight: 900;
+    text-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.561);
+    border-radius: 5px;
+    backdrop-filter: blur(50px);
+}
