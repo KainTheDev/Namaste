@@ -24,8 +24,9 @@ switchButtons.forEach(button => {
 
 function loadData(fileName) {
     fetch(`json/${fileName.split(' ').join('_')}.json`)
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
+        return console.log(data)
         loadingScreen.style.opacity = 0;
         document.body.style.overflow = '';
         setTimeout(() => loadingScreen.style.display = 'none', 500);
