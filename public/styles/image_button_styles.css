@@ -5,7 +5,7 @@
     background-color: transparent;
     border: solid white 10px;
     width: 90vw;
-    height: 500px;
+    height: 50vh;
     background-position: center;
     position: relative;
     transition: 0.5s ease-in-out;
@@ -40,7 +40,7 @@
 
 .imageButton h1 {
     color: white;
-    font-size: 6vw;
+    font-size: 4vw;
     text-transform: uppercase;
     font-weight: 900;
     text-wrap: nowrap;
@@ -50,7 +50,7 @@
 
 .imageButton h2 {
     color: white;
-    font-size: 3vw;
+    font-size: 1.5vw;
     font-weight: 900;
     text-wrap: wrap;
     position: relative;
